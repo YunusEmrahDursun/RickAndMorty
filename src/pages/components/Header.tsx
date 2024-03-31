@@ -11,11 +11,11 @@ const Header = () => {
 
   const dispatch = useAppDispatch();
 
-  const homeClick = () => { navigate('/') }
+  const homeClick = () => { navigate('/home') }
   const favoritesClick = () => { navigate('/favorites') }
   const exitClick = () => { 
     dispatch(exit());
-    navigate('/login'); 
+    navigate('/'); 
   }
   
   return (

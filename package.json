@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "start": "npx webpack serve --config webpack.config.js --port 3000"
+    "start": "npx webpack serve --config webpack.config.js --port 3000",
+    "build": "npx webpack"
   },
   "author": "Yunus Emrah Dursun",
   "license": "ISC",

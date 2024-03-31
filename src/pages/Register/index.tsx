@@ -13,13 +13,13 @@ const Register = () => {
 
   const dispatch = useAppDispatch();
 
-  const loginClick = () => { navigate('/login') }
+  const loginClick = () => { navigate('/') }
   const registerClick = () => { 
     dispatch(addUser({
       userName,
       password:md5(password)
     }))
-    navigate('/login')
+    navigate('/')
   }
   
   return (

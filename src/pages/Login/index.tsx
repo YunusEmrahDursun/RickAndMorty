@@ -31,7 +31,7 @@ const Login = () => {
         jwt:md5(Math.random())
       }))
 
-      navigate('/'); 
+      navigate('/home'); 
 
     }else{
       toast("Kullanıcı adı yada şifre yanlış!")
