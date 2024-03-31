@@ -2,14 +2,21 @@ import React, { memo } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDoorOpen, faHouse, faStar } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from 'store/hooks'
+import { exit } from 'store/userInfoSlice'; 
 
 const Header = () => {
 
   const navigate = useNavigate();
 
+  const dispatch = useAppDispatch();
+
   const homeClick = () => { navigate('/') }
   const favoritesClick = () => { navigate('/favorites') }
-  const exitClick = () => { navigate('/login') }
+  const exitClick = () => { 
+    dispatch(exit());
+    navigate('/login'); 
+  }
   
   return (
     <header>

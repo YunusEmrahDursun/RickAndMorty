@@ -5,9 +5,9 @@ import { faStar as emptyStar } from '@fortawesome/free-regular-svg-icons'
 import { useNavigate } from 'react-router-dom';
 import Loading from 'components/Loading';
 import axios from 'axios';
-import { useAppSelector, useAppDispatch } from 'hooks'
-import { addFavorite, deleteFavorite  } from '../../store/userInfoSlice'; 
-import type { RootState } from 'store';
+import { useAppSelector, useAppDispatch } from 'store/hooks'
+import { addFavorite, deleteFavorite  } from 'store/userInfoSlice'; 
+import type { RootState } from 'store/store';
 
 let throttleTimer;
 const Home = () => {
@@ -20,7 +20,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
 
   const [data, setData] = useState([]);
-  const favorites = useAppSelector((state:RootState) => state["data"]["favorites"] );
+  const favorites = useAppSelector((state:RootState) => state["user"]["favorites"] );
   
 	const [totalPage, setTotalPage] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
@@ -188,6 +188,7 @@ const Home = () => {
         </div>
       </div>
       <div className="clear"></div>
+      
       { loading ? <Loading/> : <div className='content'>
         
         {
@@ -223,4 +224,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default memo(Home)

@@ -35,8 +35,7 @@ const webpackConfig = {
     alias: {
       styles: path.resolve(__dirname, "./src/assets/styles"),
       components: path.resolve(__dirname, "./src/pages/components"),
-      store: path.resolve(__dirname, "./src/store/store"),
-      hooks: path.resolve(__dirname, "./src/store/hooks"),
+      store: path.resolve(__dirname, "./src/store")
     } 
   },
   output: {

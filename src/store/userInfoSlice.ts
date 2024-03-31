@@ -1,14 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 
-interface CounterState {
+interface IState {
   userName: string,
-  favorites:any[]
+  favorites:any[],
+  jwt:string
 }
 
-const initialState: CounterState = {
+const initialState: IState = {
   userName:"",
-  favorites:[]
+  favorites:[],
+  jwt:""
   
 }
 
@@ -22,10 +24,18 @@ export const userInfo = createSlice({
     deleteFavorite: (state, action: PayloadAction<number>) => {
       state.favorites.splice(action.payload,1)
       state.favorites = state.favorites;
-    }
+    },
+    loginUser: (state, action: PayloadAction<any>) => {
+      state.userName = action.payload.userName;
+      state.jwt = action.payload.jwt;
+    },
+    exit: (state) => {
+      state.userName = "";
+      state.jwt = "";
+    },
   }
 })
 
-export const { addFavorite, deleteFavorite } = userInfo.actions
+export const { addFavorite, deleteFavorite, loginUser, exit } = userInfo.actions
 
 export default userInfo.reducer

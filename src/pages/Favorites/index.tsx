@@ -1,11 +1,11 @@
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMale, faFemale, faQuestion, faStar as star } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom';
 import Empty from 'components/Empty';
-import { useAppSelector, useAppDispatch } from 'hooks';
-import type { RootState } from 'store';
-import { addFavorite, deleteFavorite  } from '../../store/userInfoSlice';
+import { useAppSelector, useAppDispatch } from 'store/hooks';
+import type { RootState } from 'store/store';
+import { addFavorite, deleteFavorite  } from 'store/userInfoSlice';
 
 
 const Favorites = () => {
@@ -14,7 +14,7 @@ const Favorites = () => {
 
   const dispatch = useAppDispatch();
 
-  const favorites = useAppSelector((state:RootState) => state["data"]["favorites"] );
+  const favorites = useAppSelector((state:RootState) => state["user"]["favorites"] );
 
   const [search, setSearch] = useState("");
 
@@ -59,7 +59,9 @@ const Favorites = () => {
           <input type="text" placeholder='Ara' value={search} onChange={(e)=> setSearch(e.target.value)} />
         </div>
       </div>
+      
       <div className="clear"></div>
+
       { favorites.length == 0 ? <Empty/> : <div className='content'>
         
         {
